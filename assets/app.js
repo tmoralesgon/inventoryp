@@ -14,6 +14,6 @@ import './bootstrap';
 const $ = require('jquery');
 require('bootstrap');
 
-$(document).ready(function() { /*deprecation*/
+$(function() {
     $('[data-toggle="popover"]').popover();
 });
