@@ -1,10 +1,12 @@
 <?php
 namespace App\Form\Type;
 
+use App\Entity\InvInventory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class InvInventoryType extends AbstractType
 {
@@ -14,5 +16,12 @@ class InvInventoryType extends AbstractType
             ->add('title', TextType::class)
             ->add('description', TextType::class)
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => InvInventory::class,
+        ]);
     }
 }

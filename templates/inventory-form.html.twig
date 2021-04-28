@@ -3,4 +3,7 @@
 
     {% block body %}
     <div>This is inventory form view</div>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
     {% endblock %}
