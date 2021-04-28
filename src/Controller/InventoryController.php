@@ -6,22 +6,43 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\InvInventory;
+use App\Entity\InvUser;
 use App\Form\Type\InvInventoryType;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 class InventoryController extends AbstractController
 {
     /**
-     * @Route("/inventory-form", name="inventory-form")
+     * @Route("/inventory-add", name="inventory-add")
      */
-    public function addInventory(Request $request): Response
+    public function addInventory(EntityManagerInterface $em, Request $request): Response
     {
-
+        $user = $this->getDoctrine()->getRepository(InvUser::class)->findById(1);
+        dump($user);
         
         $inventory = new InvInventory();
 
         $form = $this->createForm(InvInventoryType::class, $inventory);
 
-        return $this->render('inventory-form.html.twig', [
+        if ($request->isMethod('POST')) {
+            $form->submit($request->request->get($form->getName()));
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+                $inventory = $form->getData();
+                
+                $inventory->setUser($user);
+
+                $em->persist($inventory);
+                $em->flush();
+
+                return $this->redirectToRoute('index');
+            } else {
+                echo 'error';
+            }
+        }
+
+        return $this->render('inventory-add.html.twig', [
             'form' => $form->createView(),
         ]);
         

@@ -1,6 +1,6 @@
 index:
     path: /
     controller: App\Controller\DefaultController::index
-inventory-form:
-    path: /inventory-form
+inventory-add:
+    path: /inventory-add
     controller: App\Controller\InventoryController::addInventory

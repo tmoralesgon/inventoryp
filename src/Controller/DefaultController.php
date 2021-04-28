@@ -12,7 +12,7 @@ class DefaultController extends AbstractController
     public function index()
     {
         if(true){ //provisional
-            return $this->redirectToRoute('inventory-form');
+            return $this->redirectToRoute('inventory-add');
         }
         return $this->render('index.html.twig', ['number' => 525]);
     }
