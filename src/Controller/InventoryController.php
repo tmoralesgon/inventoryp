@@ -18,7 +18,7 @@ class InventoryController extends AbstractController
      */
     public function addInventory(EntityManagerInterface $em, Request $request): Response
     {
-        $user = $this->getDoctrine()->getRepository(InvUser::class)->findById(1);
+        $user = $this->getDoctrine()->getRepository(InvUser::class)->find(1);
         dump($user);
         
         $inventory = new InvInventory();

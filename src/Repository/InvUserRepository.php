@@ -36,7 +36,7 @@ class InvUserRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneById($value): ?InvUser
+    /*public function findOneById($value): ?InvUser
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.id = :val')
@@ -44,6 +44,6 @@ class InvUserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
+    }*/ //automaticamente con funcion find($id)
     
 }
