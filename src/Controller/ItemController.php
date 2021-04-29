@@ -76,5 +76,16 @@ class ItemController extends AbstractController
         ]);*/
 
     }
+
+    /**
+     * @Route("/item-list", name="item-list")
+     */
+    public function showItems(EntityManagerInterface $em, Request $request): Response
+    {
+        $inventory = $this->getDoctrine()->getRepository(InvInventory::class)->find(1);
+        $items = $inventory->getInvItems();
+        //$items=array("1"=>"patata", "2" => "boniato", "3" =>"panellet");
+        return $this->render('item-list.html.twig', array('items' => $items));
+    }
 }
 ?>

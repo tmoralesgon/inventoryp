@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+    {% block body %}
+        <div>This is item list view</div><br/>
+        {% for item in items %}
+        <div>{{ item.name }}</div><br/>
+        <div>{{ item.description }}</div><br/>
+        <div>{{ item.quantity }}</div><br/>
+        <div>{{ item.expiration | date('d-m-Y') }}</div><br/>
+        {% endfor %}
+    {% endblock %}

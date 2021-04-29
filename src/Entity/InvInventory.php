@@ -108,7 +108,7 @@ class InvInventory
      */
     public function getInvItems(): Collection
     {
-        return $this->invItem;
+        return $this->invItems;
     }
 
     public function addInvItem(InvItem $invItem): self
