@@ -4,3 +4,6 @@ index:
 inventory-add:
     path: /inventory-add
     controller: App\Controller\InventoryController::addInventory
+inventory-update:
+    path: /inventory-update
+    controller: App\Controller\InventoryController::updateInventory

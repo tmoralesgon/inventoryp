@@ -47,5 +47,34 @@ class InventoryController extends AbstractController
         ]);
         
     }
+
+    /**
+     * @Route("/inventory-update", name="inventory-update")
+     */
+    public function updateInventory(EntityManagerInterface $em, Request $request): Response
+    {
+        $inventory = $this->getDoctrine()->getRepository(InvInventory::class)->find(1);
+        dump($inventory);
+
+        $form = $this->createForm(InvInventoryType::class, $inventory);
+
+        if ($request->isMethod('POST')) {
+            $form->submit($request->request->get($form->getName()));
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $em->flush();
+
+                return $this->redirectToRoute('index');
+            } else {
+                echo 'error';
+            }
+        }
+
+        return $this->render('inventory-add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+    }
 }
 ?>
