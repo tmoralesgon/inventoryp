@@ -7,3 +7,9 @@ inventory-add:
 inventory-update:
     path: /inventory-update
     controller: App\Controller\InventoryController::updateInventory
+item-add:
+    path: /item-add
+    controller: App\Controller\ItemController::addItem
+item-update:
+    path: /item-update
+    controller: App\Controller\ItemController::updateItem
